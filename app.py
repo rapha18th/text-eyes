@@ -21,7 +21,7 @@ app = Flask(__name__)
 Bootstrap(app)
 
 @app.route('/')
-def index():
+def about():
 	return render_template('about.html')
 
 
@@ -134,7 +134,7 @@ def fig(mytext):
 
 
 @app.route('/text')
-def about():
+def index():
 	return render_template('index.html')
 
 @app.route('/whatsapp')
