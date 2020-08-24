@@ -48,20 +48,22 @@
 
       <div class="jumbotron">
         <div class="container">
-        <h3>NLPiffy</h3>
-        <p class="lead">Natural Language Processing simplified...</p>
-        <a class="btn btn-lg btn-primary" href="{{url_for('index')}}" role="button">Refresh</a>
-      </div>
+       <div class="w3-row w3-padding-64">
+    <div class="w3-twothird w3-container">
+      <h1 class="w3-text-teal">WhatsApp Analysis</h1>
+      <p>Make sure you export the text only (.txt file) version of your chat from within WhatsApp</p>
+      <p>IMPORTANT: Your chat is only stored on our server until the processing and generation of the image is complete</p>
+    </div>
+    <div class="w3-third w3-container">
+      <form class="w3-border w3-center w3-padding-64" method=post enctype=multipart/form-data>
+        <input class="btn btn-outline-success" type=file name=file>
+        <input  class="btn btn-outline-primary" type=submit value=Upload>
+      </form>
+    </div>
+  </div>
     </div>
 
     <div class="container">
-      <p>Enter Your Text Below</p>
-    	<form class="form-group mt-2 mt-md-0" method="POST" action="/analyze">
-         <textarea name="rawtext" cols="3" rows="3" class="form-control" required="true"></textarea>
-         <br/>
-         <button class="btn btn-outline-success " type="reset">Clear</button>
-          <button class="btn btn-outline-primary " type="submit">Nlpiffy</button>
-        </form>
     </div>
       <!-- Analysis Begins Here -->
     <div class="container">
