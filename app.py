@@ -22,7 +22,7 @@ Bootstrap(app)
 
 @app.route('/')
 def index():
-	return render_template('index.html')
+	return render_template('about.html')
 
 
 @app.route('/analyze',methods=['GET','POST'])
@@ -133,9 +133,13 @@ def fig(mytext):
     return send_file(img, mimetype='image/png')
 
 
-@app.route('/about')
+@app.route('/text')
 def about():
-	return render_template('about.html')
+	return render_template('index.html')
+
+@app.route('/whatsapp')
+def whatsapp():
+	return render_template('whatsapp.html')
 
 if __name__ == '__main__':
 	app.run(debug=True)
