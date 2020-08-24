@@ -1,6 +1,13 @@
-from flask import Flask,url_for,request,render_template,jsonify,send_file
+from flask import Flask,url_for,request,render_template,jsonify,send_file,flash,redirect
 from flask_bootstrap import Bootstrap
+from werkzeug.utils import secure_filename
 import json
+from whatsappstats import *
+
+import re
+import regex
+import pandas as pd
+import numpy as np
 
 # NLP Pkgs
 import spacy
@@ -13,12 +20,17 @@ import matplotlib.pyplot as plt
 from io import BytesIO
 import random
 import time
+import os
+
 
 
 
 # Initialize App
 app = Flask(__name__)
 Bootstrap(app)
+
+#Configuration file
+app.config.from_pyfile('config.cfg')
 
 @app.route('/')
 def about():
@@ -140,6 +152,115 @@ def index():
 @app.route('/whatsapp')
 def whatsapp():
 	return render_template('whatsapp.html')
+
+def allowed_file(filename):
+    return '.' in filename and \
+           filename.rsplit('.', 1)[1].lower() in app.config['ALLOWED_EXTENSION']
+
+
+@app.route('/whatsapp', methods=['GET', 'POST'])
+def upload_file():
+	
+    if request.method == 'POST':
+        # check if the post request has the file part
+        if 'file' not in request.files:
+            flash('No file part', category='error')
+            return redirect(request.url)
+        file = request.files['file']
+        # if user does not select file, browser also
+        # submit an empty part without filename
+        if file.filename == '':
+            flash('No selected file', category='error')
+            return redirect(request.url)
+        if file and allowed_file(file.filename):
+            filename = secure_filename(file.filename)
+            filepath = os.path.join(app.config['UPLOAD_FOLDER'], filename)
+            file.save(filepath)
+            openfile(filepath,filename)
+
+            return whats_stats(filepath, filename)   
+    return render_template('whatsapp.html')
+
+def startsWithDateAndTime(s):
+    pattern = '^([0-9]+)(\/)([0-9]+)(\/)([0-9]+), ([0-9]+):([0-9]+)[ ]?(AM|PM|am|pm)? -' 
+    result = re.match(pattern, s)
+    if result:
+        return True
+    return False
+
+def FindContact(s):
+    s=s.split(":")
+    if len(s)==2:
+        return True
+    else:
+        return False
+
+def getDataPoint(line):   
+    splitLine = line.split(' - ') 
+    dateTime = splitLine[0]
+    date, time = dateTime.split(', ') 
+    message = ' '.join(splitLine[1:])
+    if FindContact(message): 
+        splitMessage = message.split(': ') 
+        contact = splitMessage[0] 
+        message = ' '.join(splitMessage[1:])
+    else:
+        contact = None
+    return date, time, contact, message
+
+parsedData = [] # List to keep track of data so it can be used by a Pandas dataframe
+
+def openfile(filepath, filename):
+    with open(os.path.join(app.config['UPLOAD_FOLDER'], filename), encoding="utf-8") as fp:
+        fp.readline() # Skipping first line of the file because contains information related to something about end-to-end encryption
+        messageBuffer = [] 
+        date, time, contact = None, None, None
+        while True:
+            line = fp.readline() 
+            if not line: 
+                break
+            line = line.strip() 
+            if startsWithDateAndTime(line): 
+                if len(messageBuffer) > 0: 
+                    parsedData.append([date, time, contact, ' '.join(messageBuffer)]) 
+                messageBuffer.clear() 
+                date, time, contact, message = getDataPoint(line) 
+                messageBuffer.append(message) 
+            else:
+                messageBuffer.append(line)
+
+def textData(filepath,filename):
+    
+    df = pd.DataFrame(parsedData, columns=['Date', 'Time', 'Contact', 'Message']) # Initialising a pandas Dataframe.
+    df["Date"] = pd.to_datetime(df["Date"])
+    df.to_csv(os.path.join('csvs',filename),index=False)
+    return df
+
+
+@app.route('/whatsapp',methods=['GET'])
+def whats_stats(filepath,filename):
+    # TXT to CSV
+    
+    textData(os.path.join(app.config['UPLOAD_FOLDER'],filename),filename)
+    
+    # Read CSV
+    df = pd.read_csv(os.path.join('csvs',filename))
+    
+    # functions to get the facts/information about the data
+    contacts = df.Contact.unique()
+    most(filename)
+    word(filename)
+    week(filename)
+    msgs = number_of_msgs(filename)
+    member = number_of_unique_members(filename)
+    sdate = start_date(filename)
+    edate = end_date(filename)
+    avg = average_length_msg(filename)[:4]
+    maxl , name = max_length_msg(filename)
+    month = month_busy(filename)
+    day =  weekday_busy(filename)
+
+    return render_template('whatsapp.html',ctext=msgs,custom_tokens=member,custom_postagging=sdate,custom_namedentities=month,custom_wordinfo=day,blob_sentiment=day,blob_subjectivity=maxl,final_time=avg,result_json=edate)
 
 if __name__ == '__main__':
 	app.run(debug=True)
