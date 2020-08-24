@@ -55,7 +55,7 @@
       <p>IMPORTANT: Your chat is only stored on our server until the processing and generation of the image is complete</p>
     </div>
     <div class="w3-third w3-container">
-      <form class="w3-border w3-center w3-padding-64" method=post enctype=multipart/form-data>
+      <form class="w3-border w3-center w3-padding-64" method="POST" action="{{ url_for('upload_file') }}" enctype=multipart/form-data>
         <input class="btn btn-outline-success" type=file name=file>
         <input  class="btn btn-outline-primary" type=submit value=Upload>
       </form>
