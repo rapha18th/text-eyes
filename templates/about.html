@@ -13,7 +13,7 @@
 <body>
 {% block navbar %}
 	<nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
-      <a class="navbar-brand" href="#">NLPiffy</a>
+      <h1 class="nav-link bg-white"  href="#">Text Eyes</h1>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -45,25 +45,6 @@
     <br/>
      <br/>
     <br/>
-    
-  <!--   <div class="jumbotron">
-        <div class="container">
-        <h3>NLPiffy</h3>
-        <p class="lead">Natural Language Processing simplified...</p>
-        <a class="btn btn-lg btn-primary" href="{{url_for('index')}}" role="button">Refresh </a>
-      </div>
-    </div>
-      Analysis Begins Here
-    <div class="container">
-      <div class="row">
-        <div class="col-md-6">
-          <h3>NLPiffy - Natural Language Processing Web App</h3>
-          <p>By JCharisTech - J-Secur1ty</p>
-          
-        </div>
-        
-      </div>
-    </div> -->
 
 
     <div id="myCarousel" class="carousel slide" data-ride="carousel">
@@ -74,32 +55,32 @@
         </ol>
         <div class="carousel-inner">
           <div class="carousel-item active">
-            <img class="first-slide" src="{{url_for('static', filename='images/logo_nlpiffy01.png')}}" width="100%" height="50%" alt="First slide">
+            <img class="first-slide" src="{{url_for('static', filename='images/logo_nlpiffy01.png')}}" width="100%" height="25%" alt="First slide">
             <div class="container">
               <div class="carousel-caption text-left">
                 <h1>NLP</h1>
-                <p>Natural Language Processing with Simplicity.</p>
+                <h3> See beyond words</h3>
                 <p><a class="btn btn-lg btn-primary" href="{{url_for('index')}}" role="button">Get Started</a></p>
               </div>
             </div>
           </div>
           <div class="carousel-item">
-            <img class="second-slide" src="{{url_for('static', filename='images/logo_nlpiffy02.png')}}" width="100%" height="50%" alt="Second slide">
+            <img class="second-slide" src="{{url_for('static', filename='images/logo_nlpiffy02.png')}}" width="100%" height="25%" alt="Second slide">
             <div class="container">
               <div class="carousel-caption">
-                <h1>NLPiffy</h1>
+                <h1>Text Eyes</h1>
                 <p></p>
-                <p><a class="btn btn-lg btn-primary" href="#" role="button">Learn more</a></p>
+                <p><a class="btn btn-lg btn-primary" href="{{url_for('basic_api')}}" role="button">Learn more</a></p>
               </div>
             </div>
           </div>
           <div class="carousel-item">
-            <img class="third-slide" src="{{url_for('static', filename='images/logo_nlpiffy03.png')}}" width="100%" height="50%" alt="Third slide">
+            <img class="third-slide" src="{{url_for('static', filename='images/logo_nlpiffy03.png')}}" width="100%" height="25%" alt="Third slide">
             <div class="container">
               <div class="carousel-caption text-right">
                 <h1>Text Analysis.</h1>
                 <p>Analyse your text</p>
-                <p><a class="btn btn-lg btn-primary" href="{{url_for('index')}}" role="button">Try NLPiffy</a></p>
+                <p><a class="btn btn-lg btn-primary" href="{{url_for('index')}}" role="button">Try Text Eyes</a></p>
               </div>
             </div>
           </div>
@@ -123,22 +104,22 @@
         <!-- Three columns of text below the carousel -->
         <div class="row">
           <div class="col-lg-4">
-            <img class="rounded-circle" src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" alt="Generic placeholder image" width="140" height="140">
+            <img class="rounded-circle" src="data:image/png;base64,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" alt="Generic placeholder image" width="140" height="140">
             <h2>NLP</h2>
-            <p>Using Spacy and TextBlob</p>
-            <p><a class="btn btn-secondary" href="#" role="button">View details &raquo;</a></p>
+            <h4>Using Spacy and TextBlob</h4>
+            <p><a class="btn btn-secondary" href="{{url_for('index')}}" role="button">Try it &raquo;</a></p>
           </div><!-- /.col-lg-4 -->
           <div class="col-lg-4">
-            <img class="rounded-circle" src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" alt="Generic placeholder image" width="140" height="140">
-            <h2>Basic API</h2>
-            <p>NLP via API.</p>
-            <p><a class="btn btn-secondary" href="#" role="button">View details &raquo;</a></p>
+            <img class="rounded-circle" src="https://huggingface.co/favicon.ico" alt="Generic placeholder image" width="140" height="140">
+            <h2>Text Summarisation</h2>
+            <h4>Huggingface Transformer</h4>
+            <p><a class="btn btn-secondary" href="{{url_for('summary')}}" role="button">Try it &raquo;</a></p>
           </div><!-- /.col-lg-4 -->
           <div class="col-lg-4">
-            <img class="rounded-circle" src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" alt="Generic placeholder image" width="140" height="140">
-            <h2>WordCloud</h2>
-            <p>Simple Wordcloud</p>
-            <p><a class="btn btn-secondary" href="#" role="button">View details &raquo;</a></p>
+            <img class="rounded-circle" src="data:image/png;base64,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" alt="Generic placeholder image" width="140" height="140">
+            <h2>API</h2>
+            <h4>NLP via a suite of APIs</h4>
+            <p><a class="btn btn-secondary" href="{{url_for('basic_api')}}" role="button">View details &raquo;</a></p>
           </div><!-- /.col-lg-4 -->
         </div><!-- /.row -->
 </div>
