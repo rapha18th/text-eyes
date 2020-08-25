@@ -13,7 +13,7 @@
 <body>
 {% block navbar %}
 	<nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
-      <a class="navbar-brand" href="#">NLPiffy</a>
+      <h1 class="nav-link bg-white"  href="#">Text Eyes</h1>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -47,9 +47,10 @@
     <br/>
     <div class="container">
       <div class="jumbotron">
-        <h3>NLPiffy</h3>
-        <p class="lead">Natural Language Processing simplified...</p>
-        <a class="btn btn-lg btn-primary" href="{{url_for('index')}}" role="button">Refresh &raquo;</a>
+        <h3>API Docs</h3>
+        <p class="lead">NLP via a Simple Rest API</p>
+        <img class="rounded-circle" src="data:image/png;base64,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" alt="Generic placeholder image" width="100" height="100">
+        
       </div>
     </div>
 
@@ -57,8 +58,15 @@
     <div class="container">
       <div class="row">
         <div class="col-md-6">
-          <h3>API USAGE</h3>
-          <p>For multiple words place inside a string(" ")</p>
+          <h2>API USAGE</h2>
+          <h6>For multiple words place inside a string(" ")</h6>
+          <h4>Text Summary</h4>
+          <div class="alert alert-info" role="alert">.<h5>http://127.0.0.1:5000/api/v1/summarize/"{your text}"</h5></div>
+          <h4>Emotion Classification</h4>
+          <div class="alert alert-info" role="alert">.<h5>Coming soon</h5></div>
+
+          <h4>Spacy and textblob NLP</4>
+          
           <div class="alert alert-info" role="alert">.<h5>http://127.0.0.1:5000/api/tokens/"{your text}"</h5></div>
           <div class="alert alert-info" role="alert">.<h5>http://127.0.0.1:5000/api/lemma/"{your text}"</h5></div>
           <div class="alert alert-info" role="alert">.<h5>http://127.0.0.1:5000/api/ner/"{your text}"</h5></div>
