@@ -3,13 +3,13 @@ li{
   }
   #exTab1 .tab-content {
     color : white;
-    background-color: #3872fb;
+    background-color: #333;
     padding : 5px 15px;
   }
   
   #exTab2 h3 {
     color : white;
-    background-color: #3872fb;
+    background-color: #333;
     padding : 5px 15px;
   }
   
@@ -27,7 +27,7 @@ li{
   
   #exTab3 .tab-content {
     color : white;
-    background-color: #3872fb;
+    background-color: #333;
     padding : 5px 15px;
   }
   
@@ -59,7 +59,7 @@ li{
     background-color: #356635;
   }
   .badge-info {
-    background-color: #3a87ad;
+    background-color: #333;
   }
   .badge-info:hover {
     background-color: #2d6987;
@@ -84,7 +84,7 @@ li{
         margin-left: -30px;
         border-radius: 50%;
         border:6px solid transparent;
-        border-top-color: #0091EA;
+        border-top-color: #333;
         animation: spinner 0.7s linear infinite;
       }
       @keyframes spinner {
