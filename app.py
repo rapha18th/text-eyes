@@ -263,7 +263,7 @@ model_size = 't5-small'
 model = T5ForConditionalGeneration.from_pretrained(model_size)
 tokenizer = T5Tokenizer.from_pretrained(model_size)
 
-def summary(text):
+def summarise(text):
     tokens = tokenizer.encode(text, 
                             max_length=256,
                             return_tensors='pt',
@@ -281,7 +281,7 @@ def summary():
 def api_summarize():
     if request.method == 'POST':
         text = request.form.get('text')
-        return summary(text)
+        return summarise(text)
 
 if __name__ == '__main__':
 	app.run(debug=True)
