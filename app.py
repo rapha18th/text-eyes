@@ -124,12 +124,6 @@ def nlpifyapi(mytext):
 	return jsonify(mytext,allData)
 	
 
-# IMAGE WORDCLOUD
-@app.route('/summary')
-def summary():
-    return render_template('summary.html')
-
-
 @app.route('/images/<mytext>')
 def images(mytext):
     return render_template("index.html", title=mytext)
@@ -263,7 +257,9 @@ def whats_stats(filepath,filename):
 
     return render_template('results.html',name=filename, source=whats_stats)
 
-'''model_size = 't5-small'
+# Text Summarisation
+
+model_size = 't5-small'
 model = T5ForConditionalGeneration.from_pretrained(model_size)
 tokenizer = T5Tokenizer.from_pretrained(model_size)
 
@@ -277,7 +273,7 @@ def summary(text):
     return tokenizer.decode(gen_tokens.tolist()[0])
 
 @app.route('/summary', methods=['GET'])
-def home():
+def summary():
     return render_template("summary.html")
 
 
@@ -285,7 +281,7 @@ def home():
 def api_summarize():
     if request.method == 'POST':
         text = request.form.get('text')
-        return summary(text)'''
+        return summary(text)
 
 if __name__ == '__main__':
 	app.run(debug=True)
