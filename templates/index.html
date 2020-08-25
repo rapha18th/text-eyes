@@ -13,7 +13,7 @@
 <body>
 {% block navbar %}
 	<nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
-      <a class="navbar-brand" href="#">Text Eyes</a>
+      <h1 class="nav-link bg-white"  href="#">Text Eyes</h1>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -49,19 +49,19 @@
 
       <div class="jumbotron">
         <div class="container">
-        <h3>NLPiffy</h3>
-        <p class="lead">Natural Language Processing simplified...</p>
-        <a class="btn btn-lg btn-primary" href="{{url_for('index')}}" role="button">Refresh</a>
+        <h3>Text Eyes</h3>
+        <p class="lead">Simple NLP</p>
+       <img class="rounded-circle" src="data:image/png;base64,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" alt="Generic placeholder image" width="100" height="100">
       </div>
     </div>
 
     <div class="container">
-      <p>Enter Your Text Below</p>
+       <h3 class='lead'>Enter Your Text Below</h3>
     	<form class="form-group mt-2 mt-md-0" method="POST" action="/analyze">
          <textarea name="rawtext" cols="3" rows="3" class="form-control" required="true"></textarea>
          <br/>
          <button class="btn btn-outline-success " type="reset">Clear</button>
-          <button class="btn btn-outline-primary " type="submit">Nlpiffy</button>
+          <button class="btn btn-secondary"  type="submit">Submit</button>
         </form>
     </div>
       <!-- Analysis Begins Here -->
@@ -230,11 +230,6 @@
 <!-- End of Main Container -->
 <br/>
 <br/>
-
-<div class="container">
-  <h3>JSON form for Word Info </h3>
-  <pre>{{result_json }}</pre>
-</div>
 
 
 
