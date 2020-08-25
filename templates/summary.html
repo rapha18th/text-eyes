@@ -12,7 +12,7 @@
 <body>
 {% block navbar %}
 	<nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
-      <a class="navbar-brand" href="#">NLPify</a>
+      <h1 class="nav-link bg-white"  href="#">Text Eyes</h1>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -46,9 +46,9 @@
     <br/>
     <div class="container">
       <div class="jumbotron">
-        <h3>NLPify</h3>
-        <p class="lead">Where speed meet language</p>
-        <a class="btn btn-lg btn-primary" href="{{url_for('index')}}" role="button">Refresh &raquo;</a>
+        <h3>Text Eyes</h3>
+        <p class="lead">Summarise Text</p>
+        <img class="rounded-circle" src="https://huggingface.co/favicon.ico" alt="Generic placeholder image" width="100" height="100">
       </div>
     </div>
 
@@ -62,8 +62,9 @@
         <div class='col col-lg-10'>
             <form action="{{url_for('api_summarize')}}" method="POST">
                 <div class="form-group form-group-lg">
-                    <textarea id="text" class="form-control input-large" name="text" placeholder="Your text goes here"></textarea>
+                    <textarea id="text" class="form-control input-large" name="text" placeholder="Insert text here"></textarea>
                 </div>
+                <button class="btn btn-outline-success " type="reset">Clear</button>
                 <button class="btn btn-secondary" type="submit">Get Summary</button>
             </form>
         </div>
