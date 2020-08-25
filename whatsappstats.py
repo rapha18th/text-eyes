@@ -6,6 +6,8 @@ import seaborn as sb
 from collections import Counter
 from matplotlib import pyplot as plt
 from wordcloud import WordCloud, STOPWORDS
+from io import BytesIO
+import base64
 
 #return the number of messages in the csv file
 def number_of_msgs(filename):
@@ -90,8 +92,10 @@ def most(filename):
     plt.xticks(fontsize=16)
     plt.ylabel("")
     sb.despine(left=True)
-    plt.savefig(os.path.join('static/images/dashboard',filename+'mactive.png') ,bbox_inches='tight')
-
+    buf = BytesIO()
+    plt.savefig(buf, format='png')
+    data = base64.b64encode(buf.getbuffer()).decode("ascii")
+    return data
 
 '''def least(filename):
     df = pd.read_csv(os.path.join('csvs',filename))
@@ -149,7 +153,10 @@ def week(filename):
     
     plt.title("WeekDay-wise Messages", fontsize=20)
     sb.despine()
-    plt.savefig(os.path.join('static/images/dashboard',filename+'week.png') ,bbox_inches='tight')
+    buf = BytesIO()
+    plt.savefig(buf, format='png')
+    data2 = base64.b64encode(buf.getbuffer()).decode("ascii")
+    return data2
 
 
 
@@ -210,7 +217,10 @@ def word(filename):
     plt.title("WORD CLOUD",fontsize=40)
     plt.imshow(wordcloud) 
     plt.axis("off") 
-    plt.savefig(os.path.join('static/images/dashboard',filename+'word.png') ,bbox_inches='tight')
+    buf = BytesIO()
+    plt.savefig(buf, format='png')
+    data3 = base64.b64encode(buf.getbuffer()).decode("ascii")
+    return data3
 
 '''def pie(filename):
     df = pd.read_csv(os.path.join('csvs',filename))

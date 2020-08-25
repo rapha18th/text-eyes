@@ -178,8 +178,8 @@ def upload_file():
             filepath = os.path.join(app.config['UPLOAD_FOLDER'], filename)
             file.save(filepath)
             openfile(filepath,filename)
-
-            return whats_stats(filepath, filename)   
+            whats_stats(filepath, filename) 
+            return render_template('results.html')
     return render_template('whatsapp.html')
 
 def startsWithDateAndTime(s):
@@ -238,7 +238,7 @@ def textData(filepath,filename):
     return df
 
 
-@app.route('/whatsapp',methods=['GET'])
+@app.route('/results',methods=['GET'])
 def whats_stats(filepath,filename):
     # TXT to CSV
     
@@ -261,7 +261,7 @@ def whats_stats(filepath,filename):
     month = month_busy(filename)
     day =  weekday_busy(filename)
 
-    return render_template('whatsapp.html',ctext=msgs,custom_tokens=member,custom_postagging=sdate,custom_namedentities=month,custom_wordinfo=day,blob_sentiment=day,blob_subjectivity=maxl,final_time=avg,result_json=edate)
+    return render_template('results.html',name=filename, source=whats_stats)
 
 '''model_size = 't5-small'
 model = T5ForConditionalGeneration.from_pretrained(model_size)

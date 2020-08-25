@@ -79,7 +79,86 @@
       </div>
     </div>
 
+    <div class="container"><h1>Results </h1>
+<div id="exTab1" class="container">	
+<ul  class="nav nav-pills">
+			<li class="active">
+        <a  href="#1a" data-toggle="tab">Most Active</a>
+			</li>
+			<li><a href="#1b" data-toggle="tab">Weekday</a>
+			</li>
+			<li><a href="#2a" data-toggle="tab">Word Cloud</a>
+			</li>
+			<li><a href="#3a" data-toggle="tab">POS</a>
+			</li>
+			
+		</ul>
 
+			<div class="tab-content clearfix">
+			  <div class="tab-pane active" id="1a">
+          <h3>Most Active</h3>
+          <img class="center" src='data:image/png;base64,{{ source }}' alt="Most used words"/>
+				</div>
+				<div class="tab-pane" id="1b">
+          <h3>Week day</h3>
+          <div class="container">
+             <!-- WORD INFO -->
+                  
+
+                </div>
+
+                <!-- WORD INFO -->
+              </div>
+				</div>
+				<div class="tab-pane" id="2a">
+          <h3>Word Cloud</h3>
+        
+				</div>
+        <div class="tab-pane" id="3a">
+          <h3>Parts of Speech</h3>
+            <div class="container">
+           
+
+              </div>
+
+     <!-- Parts of Speech Tagging  -->
+      </div>
+				</div>
+          <div class="tab-pane" id="4a">
+
+			  
+
+			</div>
+
+				</div>
+			
+		<div class="tab-pane" id="5a">
+             <!-- For loop Previously Here  -->
+     
+  
+				</div>
+			</div>
+
+  </div>
+</div>
+<!-- End of Main Container -->
+<br/>
+<br/>
+
+<div class="container">
+  <h3>JSON form for Word Info </h3>
+  <pre>{{result_json }}</pre>
+</div>
+
+
+
+  <!-- <span class="badge badge-success">2</span>
+<span class="badge badge-warning">4</span>
+<span class="badge badge-red">6</span>
+<span class="badge badge-info">8</span>
+<span class="badge badge-inverse">10</span>
+  -->
+</body>
 {% endblock %}
 
 {% block styles %}
