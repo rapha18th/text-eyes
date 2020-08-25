@@ -22,6 +22,7 @@ import random
 import time
 import os
 
+import config
 
 from transformers import T5ForConditionalGeneration, T5Tokenizer
 
@@ -46,6 +47,7 @@ def analyze():
 		rawtext = request.form['rawtext']
 		# Analysis
 		docx = nlp(rawtext)
+
 		# Tokens
 		custom_tokens = [token.text for token in docx ]
 		# Word Info
@@ -260,7 +262,7 @@ def whats_stats(filepath,filename):
 # Text Summarisation
 
 model_size = 't5-small'
-model = T5ForConditionalGeneration.from_pretrained(model_size)
+model = T5ForConditionalGeneration.from_pretrained(model_size, force_download=True)
 tokenizer = T5Tokenizer.from_pretrained(model_size)
 
 def summarise(text):
@@ -283,7 +285,7 @@ def api_summarize():
         text = request.form.get('text')
         return summarise(text)
 
-if __name__ == '__main__':
-	app.run(debug=True)
+if __name__ == "__main__":
+    app.run(host="0.0.0.0", port=config.PORT, debug=config.DEBUG_MODE)
 
 
