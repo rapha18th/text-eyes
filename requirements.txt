@@ -8,7 +8,7 @@ cymem==2.0.3
 #dataclasses==0.7
 dominate==2.5.2
 #emoji==0.6.0
-en-core-web-sm
+https://github.com/explosion/spacy-models/releases/download/en_core_web_sm-2.1.0/en_core_web_sm-2.1.0.tar.gz#egg=en_core_web_sm
 filelock==3.0.12
 Flask==1.1.2
 Flask-Bootstrap==3.3.7.1
