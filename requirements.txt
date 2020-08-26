@@ -47,8 +47,8 @@ srsly==1.0.2
 textblob==0.15.3
 thinc==7.4.1
 tokenizers==0.8.1rc1
-https://download.pytorch.org/whl/cpu/torch-1.1.0-cp36-cp36m-linux_x86_64.whl
-#torch==1.6.0
+#https://download.pytorch.org/whl/cpu/torch-1.1.0-cp36-cp36m-linux_x86_64.whl
+torch==1.6.0
 #torchvision==0.7.0
 tqdm==4.48.2
 transformers==3.0.2
